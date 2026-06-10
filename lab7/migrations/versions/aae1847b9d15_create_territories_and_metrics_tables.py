@@ -8,7 +8,7 @@ from alembic import op
 import sqlalchemy as sa
 from geoalchemy2 import Geometry
 
-revision = '001'
+revision = 'aae1847b9d15'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -60,3 +60,5 @@ def downgrade():
     op.drop_table("territory_metrics")
     op.drop_index("idx_territories_geom", table_name="territories")
     op.drop_table("territories")
+    
+    

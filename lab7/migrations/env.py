@@ -8,7 +8,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-database_url = "postgresql+psycopg://urban_user:urban_password@localhost:5432/urban_data"
+database_url = "postgresql+psycopg://urban_user:urban_password@127.0.0.1:5432/urban_data"
 config.set_main_option("sqlalchemy.url", database_url)
 
 target_metadata = None
