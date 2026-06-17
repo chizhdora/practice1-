@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: urban_db_lab9
+    environment:
+      POSTGRES_DB: urban_data
+      POSTGRES_USER: urban_user
+      POSTGRES_PASSWORD: urban_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - urban_pg_data_lab9:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: urban_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+psycopg://urban_user:urban_password@db:5432/urban_data
+
+volumes:
+  urban_pg_data_lab9:
